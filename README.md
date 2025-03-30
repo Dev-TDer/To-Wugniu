@@ -9,6 +9,6 @@ This Chrome extension displays Wu (Shanghainese) pronunciation above every Chine
 - Adding Wugniu above every Chinese character, making it easier to read and learn Wu (Shanghainese).
 - Select any character, and click the “吳” icon to instantly access wugniu.com, which provides audio pronunciations and other learning resources.
 
-## Source
+## Sources
 - 吳語學堂: [https://www.wugniu.com/](https://www.wugniu.com/)
 - 吳語學堂上海吳語拼音輸入方案: [https://github.com/NGLI/rime-wugniu_zaonhe.git](https://github.com/NGLI/rime-wugniu_zaonhe.git)
