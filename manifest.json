@@ -1,0 +1,42 @@
+{
+    "manifest_version": 3,
+    "name": "To Wugniu 吳語通",
+    "version": "1.0",
+    "description": "Adds Wu (Shanghainese) pronunciation to every Chinese character.",
+    "permissions": [
+      "activeTab",
+      "contextMenus",
+      "scripting"
+    ],
+    "host_permissions": [
+      "<all_urls>",
+      "https://www.wugniu.com/*"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content_script.js"],
+        "css": ["styles.css"],
+        "run_at": "document_idle"
+      }
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": ["wugniu-dataset.json"],
+        "matches": ["<all_urls>"]
+      }
+    ],
+    "action": {
+      "default_icon": "icon.png",
+      "default_popup": ""
+    },
+    "icons": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  }
+  
