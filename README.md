@@ -11,7 +11,7 @@ This Chrome extension displays Wu (Shanghainese) pronunciation above every Chine
 
 ## Notes
 - 箇個擴展採用仔**中老派**上海言話注音，保留仔部分通用垃老上海个**尖團音**
-- 注音是基於**漢字本字**个吳語發音，而勿是轉譯為吳語白話文。譬如講「<ruby>你<rt>ni</rt></ruby>」會得注為 **ni**，而勿是白話裏向个「<ruby>儂<rt>nong</rt></ruby>」。
+- 注音是基於**漢字本字**个吳語發音，而勿是轉譯為吳語白話文。比方講「<ruby>你<rt>ni</rt></ruby>」會得注為 **ni**，而勿是白話裏向个「<ruby>儂<rt>nong</rt></ruby>」。
   - **【注】** 書面語譬如「<ruby>你<rt>ni</rt></ruby> <ruby>在<rt>ze</rt></ruby> <ruby>這<rt>tseq</rt></ruby>」垃垃今朝主要是出現垃**滬劇**裏向，而平常則會得講「<ruby>儂<rt>nong</rt> </ruby><ruby>垃<rt>laq</rt></ruby><ruby>垃<rt>laq</rt></ruby> <ruby>箇<rt>geq</rt></ruby><ruby>墶<rt>taq</rt></ruby>」或者「<ruby>儂<rt>nong</rt></ruby> <ruby>垃<rt>laq</rt></ruby><ruby>塰<rt>he</rt></ruby> <ruby>此<rt>tshy</rt></ruby><ruby>地<rt>di</rt></ruby>」（ 類似於粵語書面語「<ruby>你<rt>nei5</rt></ruby> <ruby>在<rt>zoi6</rt></ruby> <ruby>這<rt>ze2</rt></ruby>」搭白話「<ruby>你<rt>nei5</rt></ruby> <ruby>喺<rt>hai2</rt></ruby> <ruby>呢<rt>ni1</rt></ruby><ruby>度<rt>dou6</rt></ruby>」之間个差異）。
 - 箇個擴展目前還垃垃**公開測試階段**，部分注音（特別是垃文白異讀高頭）仍舊需要改良。假使儂發覺錯誤或者有建議，歡迎聯繫[此地](mailto:dev.tder@gmail.com)。
 
