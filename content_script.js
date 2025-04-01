@@ -235,4 +235,23 @@ function checkSurroundingChinese(node, deepCheck = false) {
 function processPage() {
     console.log("Processing entire page...");
     addwugniuToTextNodes(document.body);
+
+    // Observe dynamically added nodes
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            mutation.addedNodes.forEach((node) => {
+                if (node.nodeType === Node.ELEMENT_NODE) {
+                    addwugniuToTextNodes(node);
+                } else if (node.nodeType === Node.TEXT_NODE && node.nodeValue.trim()) {
+                    processTextNode(node);
+                }
+            });
+        });
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
 }
+
