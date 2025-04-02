@@ -12,7 +12,7 @@ chrome.runtime.onInstalled.addListener(() => {
     contexts: ["selection"]
   });
 
-  // Add additional context menu item for Suzhounese Pronunciation
+  // Add additional context menu item for Ningbonese Pronunciation
   chrome.contextMenus.create({
     id: "findNingbonesePronunciation",
     title: "To Ningbonese",
