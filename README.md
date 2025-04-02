@@ -17,5 +17,5 @@ This Chrome extension displays Wu (Shanghainese) pronunciation above every Chine
 
 ## Sources
 - [吳語學堂](https://www.wugniu.com/)
-- [吳語學堂音系及拼音方案](https://github.com/NGLI/rime-wugniu_zaonhe.wiki.git)
+- [吳語學堂音系及拼音方案](https://github.com/NGLI/rime-wugniu_zaonhe/wiki/%E9%9F%B3%E7%B3%BB%E5%8F%8A%E6%8B%BC%E9%9F%B3%E6%96%B9%E6%A1%88)
 - [吳語學堂上海吳語拼音輸入方案](https://github.com/NGLI/rime-wugniu_zaonhe.git)
