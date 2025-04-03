@@ -91,7 +91,7 @@ let wugniuData = {};
 let organizedwugniuData = {};
 
 // Load wugniu dataset
-fetch(chrome.runtime.getURL("wugniu-dataset.json"))
+fetch(chrome.runtime.getURL("wugniu_dict.json"))
     .then(response => response.json())
     .then(data => {
         wugniuData = data;
