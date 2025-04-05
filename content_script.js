@@ -116,10 +116,50 @@ function organizewugniuData(wugniuData) {
     return organizedData;
 }
 
+function isAlreadyProcessed(node) {
+    // Check if the node is already wrapped in a <ruby> tag
+    if (node.parentNode && node.parentNode.tagName === "RUBY") {
+        return true;
+    }
+    
+    // Check if the node's innerHTML contains <ruby> tags (for <strong> or other elements)
+    if (node.innerHTML && /<ruby>.*?<\/ruby>/.test(node.innerHTML)) {
+        return true;
+    }
+
+    return false;
+}
+
+function processStrongTags(node, surroundedByChinese) {
+    if (isAlreadyProcessed(node)) return;  // Skip if already processed
+
+    if (node.tagName === "STRONG") {
+        const textContent = node.innerText;
+
+        if (containsNonChineseText(textContent)) { // Only process if it's non-Chinese text
+            node.innerHTML = node.innerHTML.replace(/(\p{L}+|\p{N}+|[\p{P}\p{S}]+)/gu, (match) => {
+                if (surroundedByChinese) {
+                    return `<ruby>${match}<rt>&#8203;</rt></ruby>`; // Add &#8203; if surrounded by Chinese
+                } 
+                return match; // Return unchanged if not surrounded by Chinese
+            });
+        }
+    }
+}
+
 function addwugniuToTextNodes(node) {
     if (node.nodeType === Node.TEXT_NODE && node.nodeValue.trim()) {
-        processTextNode(node);
+        if (!isAlreadyProcessed(node)) {  // Check if the text node is already processed
+            processTextNode(node);
+        }
     } else if (node.nodeType === Node.ELEMENT_NODE) {
+        if (node.tagName === "STRONG" && isInsideProcessableLI(node)) {
+            let surroundedByChinese = checkSurroundingChinese(node, true);
+            if (!isAlreadyProcessed(node)) {  // Check if the strong tag is already processed
+                processStrongTags(node, surroundedByChinese);
+            }
+        }
+
         if (!["SCRIPT", "STYLE", "NOSCRIPT", "IFRAME", "CODE", "PRE"].includes(node.tagName)) {
             for (let child of Array.from(node.childNodes)) {
                 addwugniuToTextNodes(child);
@@ -128,7 +168,23 @@ function addwugniuToTextNodes(node) {
     }
 }
 
+function isInsideProcessableLI(node) {
+    while (node.parentElement) {
+        if (node.parentElement.tagName === "LI") return true; // Only process <strong> within <li> tags
+        node = node.parentElement;
+    }
+    return false;
+}
+
+function containsNonChineseText(text) {
+    const chineseRegex = /[\u4e00-\u9fff]/;  // Checks if there is any Chinese text
+    return !chineseRegex.test(text);  // Return true if text is NOT Chinese
+}
+
+
 function processTextNode(node) {
+    if (isAlreadyProcessed(node)) return;  // Skip if already processed
+
     let text = node.nodeValue;
     let chineseRegex = /[\u4e00-\u9fff]+/g;
     let generalRegex = /[\p{L}\p{N}.,!?;:"'(){}\[\]<>\/\\@#$%^&*~_\-+=|，。！？；：“”‘’（）【】《》、—……·\s]+/gu;
