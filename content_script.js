@@ -252,7 +252,7 @@ function processChineseText(text) {
             for (let k = 0; k < longestMatch.length; k++) {
                 let character = longestMatch[k];
                 let wugniu = wugniuParts[k] || '-';
-                result += `<ruby>${character}<rt>${wugniu}</rt></ruby>`;
+                result += `<ruby class="wugniu-ruby">${character}<rt class="wugniu-rt">${wugniu}</rt></ruby>`;
             }
 
             i += longestMatch.length;
