@@ -2,7 +2,7 @@
 This Chrome extension displays Wu (Shanghainese) pronunciation above every Chinese character, making it easier to read and learn Wu Chinese.
 
 ## Download <ruby>下<rt>gho</rt></ruby> <ruby>載<rt>tse</rt></ruby>
-https://chromewebstore.google.com/detail/gkfjbikjgdjfkpjnbjofdadakgpohkom?utm_source=item-share-cb
+- [Chrome Web Store](https://chromewebstore.google.com/detail/gkfjbikjgdjfkpjnbjofdadakgpohkom?utm_source=item-share-cb)
 
 ## Features <ruby>功<rt>kon</rt></ruby> <ruby>能<rt>nen</rt></ruby>
 ![Demo](./demo2.png)
