@@ -4,7 +4,7 @@ ruby {
   flex-direction: column-reverse;
   align-items: center;
   margin: 3px 1px;
-  font-size: inherit !important; /* Inherit size from parent elements */
+  font-size: inherit; /* Inherit size from parent elements */
   line-height: 1.2 !important;
 }
 
@@ -13,6 +13,12 @@ rt {
   font-size: 12px !important;  /* Increased size for readability */
   line-height: 1.2 !important;  /* Makes it tighter and closer */
   margin-top: -2px !important;  /* Closer to the text for better appearance */
+}
+
+/* Default Styling for Body Text */
+body article ruby, body p ruby, body div.content ruby {
+  font-size: 18px !important;
+  line-height: 1.2;
 }
 
 /* Styling for Wugniu Ruby with Spacing */
