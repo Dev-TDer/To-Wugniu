@@ -1,21 +1,19 @@
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     id: "findPronunciation",
-    title: "To Shanghainese",
+    title: chrome.i18n.getMessage("contextMenuShanghainese"),
     contexts: ["selection"]
   });
   
-  // Add additional context menu item for Suzhounese Pronunciation
   chrome.contextMenus.create({
     id: "findSuzhounesePronunciation",
-    title: "To Suzhounese",
+    title: chrome.i18n.getMessage("contextMenuSuzhounese"),
     contexts: ["selection"]
   });
 
-  // Add additional context menu item for Ningbonese Pronunciation
   chrome.contextMenus.create({
     id: "findNingbonesePronunciation",
-    title: "To Ningbonese",
+    title: chrome.i18n.getMessage("contextMenuNingbonese"),
     contexts: ["selection"]
   });
 });
@@ -30,7 +28,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   }
 });
 
-// ✅ NEW: Handle click on the extension icon
+// Handle click on the extension icon
 chrome.action.onClicked.addListener((tab) => {
   chrome.scripting.executeScript({
       target: { tabId: tab.id },

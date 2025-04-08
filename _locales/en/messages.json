@@ -1,0 +1,7 @@
+{
+    "extensionName": { "message": "To Wugniu 吳語通" },
+    "extensionDescription": { "message": "Adds Wu (Shanghainese) pronunciation above every Chinese character." },
+    "contextMenuShanghainese": { "message": "To Shanghainese" },
+    "contextMenuSuzhounese": { "message": "To Suzhounese" },
+    "contextMenuNingbonese": { "message": "To Ningbonese" }
+}

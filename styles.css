@@ -16,8 +16,8 @@ rt {
 }
 
 /* Default Styling for Body Text */
-body article ruby, body p ruby, body div.content ruby {
-  font-size: 18px !important;
+body p ruby {
+  font-size: 18px;
   line-height: 1.2;
 }
 
@@ -34,4 +34,77 @@ body article ruby, body p ruby, body div.content ruby {
   margin-right: 0.05em; /* Add spacing to the right */
   margin-left: 0.05em;  /* Add spacing to the left */
   white-space: nowrap; /* Prevent line breaks */
+}
+
+/* EXCEPTIONS */
+/* Special Styling for Google `nwVKo` - Render Sideways */
+.QpPSMb ruby {
+  display: inline-flex;
+  flex-direction: row; /* Render annotation side-by-side */
+  align-items: flex-start; /* Align annotation and character horizontally */
+  margin: 0 3px; /* Adjust spacing */
+}
+.QpPSMb rt {
+  margin-top: 0 !important; /* Remove top margin */
+  margin-left: 4px; /* Add space to the right of the character */
+  font-size: 10px !important; /* Slightly smaller for sideways rendering */
+}
+.nwVKo ruby {
+  display: inline-flex;
+  flex-direction: row; /* Render annotation side-by-side */
+  align-items: flex-start; /* Align annotation and character horizontally */
+  margin: 0 3px; /* Adjust spacing */
+}
+.nwVKo rt {
+  margin-top: 0 !important; /* Remove top margin */
+  margin-left: 4px; /* Add space to the right of the character */
+  font-size: 10px !important; /* Slightly smaller for sideways rendering */
+}
+
+/* Additional */
+/* Baike Exception: Everything within expandable Nav Bar */
+.index-module_navBarWrapper__X0DND ruby {
+  font-size: 12.5px !important;  /* Smaller size for navigation bar */
+  line-height: 1.1 !important;
+  margin-top: -4px; /* Move the text upward - Adjust this value to your liking */
+}
+.index-module_navBarWrapper__X0DND rt {
+  font-size: 8px !important;  /* Smaller size for navigation bar */
+  line-height: 1.2 !important;
+}
+/* Exception: Search Bar */
+.lemmaBtn span ruby, .lemmaSearchBarWrapper span ruby, .lemmaSearchBarWrapper .wugniu-ruby ruby {
+  font-size: 12.5px !important;  /* Smaller size for search bar area */
+  line-height: 1.1 !important;
+  margin-top: -4px; /* Move the text upward - Adjust this value to your liking */
+}
+.lemmaBtn span rt, .lemmaSearchBarWrapper span rt, .lemmaSearchBarWrapper .wugniu-ruby rt {
+  font-size: 10px !important;  /* Smaller size for search bar area */
+  line-height: 1.1 !important;
+}
+
+/* Exception: Search menu (top) */
+.head_inner rt, .userbar rt, .index-module_topbar__aBAV7 rt {
+  font-size: 10px !important;  /* Smaller size for topbar */
+  line-height: 1.1 !important;  /* Slightly tighter spacing */
+}
+
+/* Search Exception: Search mode buttons, small text below */
+.tag-container_ksKXH ruby, .new_wrapper_1YQab ruby {
+  font-size: 10px !important;  /* Smaller size for navigation bar */
+  line-height: 1.1 !important;
+  margin-top: -4px; /* Move the text upward - Adjust this value to your liking */
+}
+.tag-container_ksKXH rt, .new_wrapper_1YQab rt {
+  font-size: 8px !important;  /* Smaller size for navigation bar */
+  line-height: 1.2 !important;
+}
+/* Exception: Side Bar, Top Cover Box */
+.aside ruby, .head_content ruby, .cr-offset  ruby {
+  font-size: inherit !important;  /* Smaller size for aside */
+  line-height: 1.2 !important;
+}
+.head_content rt {
+  font-size: 10px !important;  /* Smaller size for aside */
+  line-height: 1.2 !important;
 }

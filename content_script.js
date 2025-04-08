@@ -147,22 +147,57 @@ function processStrongTags(node, surroundedByChinese) {
     }
 }
 
+function isExcludedFromAnnotation(node) {
+    // Check if the node is within #nv or #qmenu
+    let currentNode = node;
+    while (currentNode) {
+        if (currentNode.classList) {  // Ensure currentNode has classList before checking classes
+            if (currentNode.classList.contains("gp2k11k")) {
+                // If the current node is "c-row", return true to exclude it
+                if (node.classList && node.classList.contains("c-row")) {
+                    return true;  // Prevent annotation
+                }
+                break; // Stop checking once "gp2k11k" is found
+            }
+            
+            if (currentNode.classList.contains("navList")) {
+                return true;  // Prevent annotation for nodes with class .navList
+            }
+        }
+        
+        if (currentNode.id === "nv" || currentNode.id === "qmenu") {
+            return true; // Prevent annotation within #nv or #qmenu
+        }
+        
+        currentNode = currentNode.parentElement;
+    }
+
+    // Exclude specific URL
+    if (location.hostname === "www.baidu.com" && location.pathname === "/" && !location.search) {
+        return true;  // Exclude the main homepage only, not search results
+    }
+
+    return false;
+}
+
 function addwugniuToTextNodes(node) {
     if (node.nodeType === Node.TEXT_NODE && node.nodeValue.trim()) {
-        if (!isAlreadyProcessed(node)) {  // Check if the text node is already processed
+        if (!isAlreadyProcessed(node) && !isExcludedFromAnnotation(node)) {  // Skip annotation if excluded
             processTextNode(node);
         }
     } else if (node.nodeType === Node.ELEMENT_NODE) {
-        if (node.tagName === "STRONG" && isInsideProcessableLI(node)) {
-            let surroundedByChinese = checkSurroundingChinese(node, true);
-            if (!isAlreadyProcessed(node)) {  // Check if the strong tag is already processed
-                processStrongTags(node, surroundedByChinese);
+        if (!isExcludedFromAnnotation(node)) {  // Skip annotation if excluded
+            if (node.tagName === "STRONG" && isInsideProcessableLI(node)) {
+                let surroundedByChinese = checkSurroundingChinese(node, true);
+                if (!isAlreadyProcessed(node)) {
+                    processStrongTags(node, surroundedByChinese);
+                }
             }
-        }
 
-        if (!["SCRIPT", "STYLE", "NOSCRIPT", "IFRAME", "CODE", "PRE"].includes(node.tagName)) {
-            for (let child of Array.from(node.childNodes)) {
-                addwugniuToTextNodes(child);
+            if (!["SCRIPT", "STYLE", "NOSCRIPT", "IFRAME", "CODE", "PRE"].includes(node.tagName)) {
+                for (let child of Array.from(node.childNodes)) {
+                    addwugniuToTextNodes(child);
+                }
             }
         }
     }
@@ -181,14 +216,12 @@ function containsNonChineseText(text) {
     return !chineseRegex.test(text);  // Return true if text is NOT Chinese
 }
 
-
 function processTextNode(node) {
-    if (isAlreadyProcessed(node)) return;  // Skip if already processed
+    if (isAlreadyProcessed(node) || isExcludedFromAnnotation(node)) return;  // Skip if already processed
 
     let text = node.nodeValue;
     let chineseRegex = /[\u4e00-\u9fff]+/g;
     let generalRegex = /[\p{L}\p{N}.,!?;:"'(){}\[\]<>\/\\@#$%^&*~_\-+=|，。！？；：“”‘’（）【】《》、—……·\s]+/gu;
-    let punctuationRegex = /[()\[\]{}<>]/g;
 
     let newHTML = '';
     let lastIndex = 0;
