@@ -91,29 +91,100 @@ let wugniuData = {};
 let organizedwugniuData = {};
 
 // Load wugniu dataset
-fetch(chrome.runtime.getURL("wugniu_dict.json"))
+fetch(chrome.runtime.getURL("data/wugniu_dict.json"))
+  .then(response => response.json())
+  .then(data => {
+    wugniuData = data;
+    console.log("✅ wugniu dataset loaded successfully!");
+
+    organizedwugniuData = organizewugniuData(wugniuData);
+
+    chrome.storage.local.get("translationEnabled", (data) => {
+      if (data.translationEnabled === true) {
+        runTranslation();
+      } else {
+        processPage(); // Just annotate original text
+      }
+    });
+  })
+  .catch(error => console.error("❌ Failed to load wugniu dataset:", error));
+
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.type === "ENABLE_TRANSLATION") {
+    runTranslation();
+  } else if (message.type === "DISABLE_TRANSLATION") {
+    undoTranslation();
+  }
+});
+
+function runTranslation() {
+  fetch(chrome.runtime.getURL("data/translate.json"))
     .then(response => response.json())
-    .then(data => {
-        wugniuData = data;
-        console.log("✅ wugniu dataset loaded successfully!");
+    .then(translationMap => {
+      const sortedKeys = Object.keys(translationMap).sort((a, b) => b.length - a.length);
+      const prefixSet = new Set(sortedKeys.map(word => word[0]));
 
-        // Organize the wugniu data here AFTER it's loaded
-        organizedwugniuData = organizewugniuData(wugniuData);
-
-        processPage(); // Process page after loading and organizing dataset
-    })
-    .catch(error => console.error("❌ Failed to load wugniu dataset:", error));
-
-function organizewugniuData(wugniuData) {
-    let organizedData = {};
-    for (let key in wugniuData) {
-        let length = key.length;
-        if (!organizedData[length]) {
-            organizedData[length] = {};
+      function translateText(text) {
+        let result = '';
+        let i = 0;
+        while (i < text.length) {
+          let matched = false;
+          if (prefixSet.has(text[i])) {
+            for (const word of sortedKeys) {
+              if (text.startsWith(word, i)) {
+                result += translationMap[word];
+                i += word.length;
+                matched = true;
+                break;
+              }
+            }
+          }
+          if (!matched) {
+            result += text[i];
+            i += 1;
+          }
         }
-        organizedData[length][key] = wugniuData[key];
-    }
-    return organizedData;
+        return result;
+      }
+
+      function walkAndTranslate(node) {
+        const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, null, false);
+        let textNode;
+        while ((textNode = walker.nextNode())) {
+          const original = textNode.nodeValue;
+          const translated = translateText(original);
+          if (original !== translated) {
+            textNode.parentElement?.setAttribute("data-original", original);
+            textNode.nodeValue = translated;
+          }
+        }
+      }
+
+      walkAndTranslate(document.body);
+      processPage();
+    })
+}
+
+function undoTranslation() {
+    const elements = document.querySelectorAll("[data-original]");
+    elements.forEach(el => {
+      const original = el.getAttribute("data-original");
+      if (original && el.firstChild && el.firstChild.nodeType === Node.TEXT_NODE) {
+        el.firstChild.nodeValue = original;
+      }
+      el.removeAttribute("data-original");
+    });
+  }
+  
+
+function organizewugniuData(data) {
+  const organized = {};
+  for (let key in data) {
+    const len = key.length;
+    if (!organized[len]) organized[len] = {};
+    organized[len][key] = data[key];
+  }
+  return organized;
 }
 
 function isAlreadyProcessed(node) {
