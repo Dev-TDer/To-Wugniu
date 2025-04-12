@@ -7,7 +7,7 @@ This Chrome extension displays Wu (Shanghainese) pronunciation above every Chine
 ## Features <ruby>功<rt>kon</rt></ruby> <ruby>能<rt>nen</rt></ruby>
 ![Demo](./demo2.png)
 ![Demo](./demo3.png)
-![Demo](./demo4.png)
+![Demo](./demo5.png)
 #### 吳
 - 垃垃**每個漢字**高頭顯示**吳語學堂拼音**，讓閱讀搭學習吳語（上海言話）更加輕鬆。
 - 點擊右上方个「吳」圖標，將網頁從**書面語**（例：「今天下雨」）翻譯到**吳語白話文**（例：「今朝落雨」）。
