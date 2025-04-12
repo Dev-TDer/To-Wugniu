@@ -6,34 +6,34 @@
   <style>
     body {
       font-family: sans-serif;
-      padding: 20px 10px 10px;
+      padding: 20px 10px;
       margin: 0;
       min-width: 280px;
       background: #fff;
     }
 
-    .row {
+    .container {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-size: 16px;
-      white-space: nowrap;
+      justify-content: flex-start;
+      padding: 20px 10px;
+      text-align: center;
+    }
+
+    .icon {
+      width: 64px;
+      height: 64px;
       margin-bottom: 12px;
-      flex-wrap: nowrap;
     }
 
-    .beta-badge {
-      background-color: #f90;
-      color: white;
-      font-size: 10px;
-      padding: 1px 6px;
-      border-radius: 6px;
-      text-transform: uppercase;
-      flex-shrink: 0;
+    .toggle-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
     }
 
-    /* Clean and proportional toggle */
     .switch {
       position: relative;
       display: inline-block;
@@ -77,6 +77,27 @@
       transform: translateX(20px);
     }
 
+    .label-text {
+      font-size: 16px;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      justify-content: center;
+    }
+
+    .beta-badge {
+      background-color: #888;
+      color: white;
+      font-size: 10px;
+      padding: 1px 6px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
     .example-block {
       font-family: "Kaiti", "楷体", "KaiTi", "KaiTi_GB2312", serif;
       font-size: 20px;
@@ -94,20 +115,26 @@
   </style>
 </head>
 <body>
+  <div class="container">
+    <img src="icon.png" alt="Icon" class="icon" />
 
-  <div class="row">
-    <label class="switch">
-      <input type="checkbox" id="toggle">
-      <span class="slider"></span>
-    </label>
-    <span>To Spoken Form 吳語白話文</span>
-    <span class="beta-badge">Beta</span>
-  </div>
+    <div class="toggle-block">
+      <label class="switch">
+        <input type="checkbox" id="toggle">
+        <span class="slider"></span>
+      </label>
 
-  <div class="example-block">
-    <div class="mandarin">今天我們一起去喝茶</div>
-    <div class="arrow">↓</div>
-    <div class="wuyu">今朝阿拉一道去喫茶</div>
+      <div class="label-text">
+        To Spoken Form 吳語白話文
+        <span class="beta-badge">Beta</span>
+      </div>
+    </div>
+
+    <div class="example-block">
+      <div class="mandarin">今天我們一起去喝茶</div>
+      <div class="arrow">↓</div>
+      <div class="wu">今朝阿拉一道去喫茶</div>
+    </div>
   </div>
 
   <script src="popup.js"></script>
