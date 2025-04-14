@@ -1,5 +1,5 @@
 # To Wugniu <ruby>吳<rt>wu</rt></ruby> <ruby>語<rt>gniu</rt></ruby> <ruby>通<rt>thon</rt></ruby>
-This Chrome extension displays Wu (Shanghainese) pronunciation above every Chinese character, making it easier to read and learn Wu Chinese.
+This Chrome extension displays Wu (Shanghainese) pronunciation above Chinese characters and can translate websites from Mandarin to Shanghainese.
 
 ## Download <ruby>下<rt>gho</rt></ruby> <ruby>載<rt>tse</rt></ruby>
 - [Chrome Web Store](https://chromewebstore.google.com/detail/gkfjbikjgdjfkpjnbjofdadakgpohkom?utm_source=item-share-cb)
@@ -9,15 +9,15 @@ This Chrome extension displays Wu (Shanghainese) pronunciation above every Chine
 ![Demo](./demo3.png)
 ![Demo](./demo5.png)
 #### 吳
-- 垃垃**每個漢字**高頭顯示**吳語學堂拼音**，讓閱讀搭學習吳語（上海言話）更加輕鬆。
-- 點擊右上方个「吳」圖標，將網頁從**書面語**（例：「今天下雨」）翻譯到**吳語白話文**（例：「今朝落雨」）。
-- 喫勿準哪恁讀？選擇任何一個漢字，點擊彈出來个「吳」圖標就好馬上到吳語學堂，**獲取音頻發音**搭仔其他學習資源。
-- 右擊選好个漢字，獲得搭比較該個漢字垃垃**上海言話**、**蘇州言話**搭仔**寧波言話**裏向个發音。
+- 垃垃**每隻漢字**高頭顯示**吳語學堂拼音**，幫儂操練吳語（上海言話）閲讀。
+- 看勿懂吳拼？選隻漢字，撳記彈出來个「吳」圖標就好上吳語學堂，聽該字个**讀音音頻**。
+  - 假使儂右擊選好个漢字，還好通過菜單聽該字垃**蘇州言話**搭**寧波言話**裏向个讀音。
+- 讀起來有眼喫力？撳記右上角拼圖裏向个「吳」圖標就好拿網頁從**書面語**（例：「你好」）翻譯成**吳語白話文**（例：「儂好」）。
 #### EN
 - Adding **Wugniu** above **every Chinese character**, making it easier to read and learn Wu (Shanghainese).
-- Easily switch between **written form** and **spoken form**.
 - Select any character, and click the “吳” icon to instantly access wugniu.com, which provides **audio pronunciations** and other learning resources.
-- Right-click the selected Chinese character to explore its audio pronunciation in **Shanghainese**, **Suzhounese**, and **Ningbonese**.
+  - Right-click the selected Chinese character to explore its audio pronunciation in **different Wu varieties**.
+- Easily switch between **written form** and **spoken form** by clicking the extension icon in the top right corner..
 
 ## Notes <ruby>注<rt>tsy</rt></ruby> <ruby>意<rt>i</rt></ruby>
 - 箇個擴展採用仔**中老派**上海言話注音，保留仔部分通用垃老上海个**尖團音**
