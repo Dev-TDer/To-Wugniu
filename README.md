@@ -12,7 +12,7 @@ This Chrome extension displays Wu (Shanghainese) pronunciation above Chinese cha
 - 垃垃**每隻漢字**高頭顯示**吳語學堂拼音**，幫儂操練吳語（上海言話）閱讀。
 - 看勿懂吳拼？選隻漢字，撳記彈出來个「吳」圖標就好上吳語學堂，聽該字个**讀音音頻**。
   - 假使儂右擊選好个漢字，還好通過菜單聽該字垃**蘇州言話**搭**寧波言話**裏向个讀音。
-- 讀起來有眼喫力？撳記右上角拼圖裏向个「吳」圖標就好拿網頁從**書面語**（例：「你好」）翻譯成**吳語白話文**（例：「儂好」）。
+- 讀起來有眼喫力？撳記右上角拼圖裏向个「吳」圖標就好拿網頁從**書面語**（例：「你好」）翻譯成**白話文**（例：「儂好」）。
 #### EN
 - Adding **Wugniu** above **every Chinese character**, making it easier to read and learn Wu (Shanghainese).
 - Select any character, and click the “吳” icon to instantly access wugniu.com, which provides **audio pronunciations** and other learning resources.
