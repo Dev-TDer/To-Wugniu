@@ -1,0 +1,7 @@
+{
+    "extensionName": { "message": "To Wugniu 呉語通" },
+    "extensionDescription": { "message": "漢字に呉語（上海語）の発音を表示し、ウェブページの標準中国語を上海語に翻訳します。" },
+    "contextMenuShanghainese": { "message": "To 上海語" },
+    "contextMenuSuzhounese": { "message": "To 蘇州語" },
+    "contextMenuNingbonese": { "message": "To 寧波語" }
+}

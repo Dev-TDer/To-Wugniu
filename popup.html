@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Wu Translate</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: sans-serif;
@@ -17,21 +18,39 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      padding: 20px 10px;
-      text-align: center;
+      padding: 20px 12px;
+      text-align: left;
+      width: 100%;
     }
 
     .icon {
       width: 64px;
       height: 64px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
       margin-bottom: 12px;
+    }
+
+    .title {
+      font-family: 'Noto Serif SC', 'KaiTi', '楷体', 'STKaiti', serif;
+      font-size: 28px;
+      color: #2f518c;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 24px;
+      text-align: center;
     }
 
     .toggle-block {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
+      justify-content: flex-start;
       margin-bottom: 20px;
+      width: 100%;
+      gap: 10px;
+      cursor: pointer;
     }
 
     .switch {
@@ -79,13 +98,11 @@
 
     .label-text {
       font-size: 16px;
-      margin-top: 8px;
       display: flex;
       align-items: center;
       gap: 6px;
-      flex-wrap: nowrap;
-      white-space: nowrap;
-      justify-content: center;
+      flex-wrap: wrap;
+      line-height: 1.2;
     }
 
     .beta-badge {
@@ -104,7 +121,11 @@
       font-weight: normal;
       text-align: center;
       line-height: 1.4;
-      margin-top: 8px;
+      margin-top: 0px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .example-block .arrow {
@@ -116,20 +137,28 @@
 </head>
 <body>
   <div class="container">
-    <img src="icon.png" alt="Icon" class="icon" />
+    <img src="icon.png" alt="Wu icon" class="icon" />
+    <div class="title">吳語通</div>
 
-    <div class="toggle-block">
-      <label class="switch">
+    <!-- Wugniu Toggle -->
+    <label class="toggle-block row-toggle">
+      <span class="switch">
+        <input type="checkbox" id="wugniuToggle">
+        <span class="slider"></span>
+      </span>
+      <span class="label-text">To Wugniu 吳拼</span>
+    </label>
+
+    <!-- Spoken Form Toggle -->
+    <label class="toggle-block row-toggle">
+      <span class="switch">
         <input type="checkbox" id="toggle">
         <span class="slider"></span>
-      </label>
+      </span>
+      <span class="label-text">To Spoken Form 吳語白話文 <span class="beta-badge">Beta</span></span>
+    </label>
 
-      <div class="label-text">
-        To Spoken Form 吳語白話文
-        <span class="beta-badge">Beta</span>
-      </div>
-    </div>
-
+    <!-- Example -->
     <div class="example-block">
       <div class="mandarin">今天我們一起去喝茶</div>
       <div class="arrow">↓</div>

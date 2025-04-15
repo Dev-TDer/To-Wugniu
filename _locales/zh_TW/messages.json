@@ -1,6 +1,6 @@
 {
     "extensionName": { "message": "To Wugniu 吳語通" },
-    "extensionDescription": { "message": "垃垃每隻漢字高頭添加吳語（上海言話）个讀音。" },
+    "extensionDescription": { "message": "垃垃每隻漢字高頭添加吳語（上海言話）个讀音，外加還好將網頁從國語翻成上海言話。" },
     "contextMenuShanghainese": { "message": "To 上海言話" },
     "contextMenuSuzhounese": { "message": "To 蘇州言話" },
     "contextMenuNingbonese": { "message": "To 寧波言話" }
