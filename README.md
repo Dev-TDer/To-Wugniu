@@ -5,8 +5,12 @@ This Chrome extension displays Wu (Shanghainese) pronunciation above Chinese cha
 - [Chrome Web Store](https://chromewebstore.google.com/detail/gkfjbikjgdjfkpjnbjofdadakgpohkom?utm_source=item-share-cb)
 
 ## Features <ruby>功<rt>kon</rt></ruby> <ruby>能<rt>nen</rt></ruby>
-![Demo](./demo2.png)
-![Demo](./demo3.png)
+<p align="center">
+  <img src="./demo1.png" alt="Demo 1" width="49%">
+  <img src="./demo2.png" alt="Demo 2" width="49%">
+</p>
+
+![Demo](./demo4.png)
 ![Demo](./demo5.png)
 #### 吳
 - 垃垃**每隻漢字**高頭顯示**吳語學堂拼音**，幫儂操練吳語（上海言話）閱讀。
