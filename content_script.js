@@ -99,12 +99,15 @@ fetch(chrome.runtime.getURL("data/wugniu_dict.json"))
 
     organizedwugniuData = organizewugniuData(wugniuData);
 
-    chrome.storage.local.get("translationEnabled", (data) => {
-      if (data.translationEnabled === true) {
-        runTranslation();
-      } else {
-        processPage(); // Just annotate original text
-      }
+    chrome.storage.local.get(["translationEnabled", "wugniuEnabled"], (data) => {
+        const translationOn = data.translationEnabled === true;
+        const wugniuOn = data.wugniuEnabled !== false; // default true
+      
+        if (translationOn) {
+            runTranslation(); // This calls processPage()
+        } else if (wugniuOn) {
+            processPage(); // Only add annotations, no translation
+        }
     });
   })
   .catch(error => console.error("❌ Failed to load wugniu dataset:", error));
@@ -114,56 +117,90 @@ chrome.runtime.onMessage.addListener((message) => {
     runTranslation();
   } else if (message.type === "DISABLE_TRANSLATION") {
     undoTranslation();
+  } else if (message.type === "SHOW_WUGNIU") {
+    console.log("👁️ Showing Wugniu annotations...");
+    processPage();
+  } else if (message.type === "HIDE_WUGNIU") {
+    console.log("🙈 Hiding Wugniu annotations...");
+    removeWugniuAnnotations();
   }
 });
 
-function runTranslation() {
-  fetch(chrome.runtime.getURL("data/translate.json"))
-    .then(response => response.json())
-    .then(translationMap => {
-      const sortedKeys = Object.keys(translationMap).sort((a, b) => b.length - a.length);
-      const prefixSet = new Set(sortedKeys.map(word => word[0]));
+function removeWugniuAnnotations() {
+    const rubyElements = document.querySelectorAll("ruby.wugniu-ruby");
+  
+    rubyElements.forEach(ruby => {
+      const parent = ruby.parentNode;
+      if (!parent) return;
+  
+      const text = ruby.textContent;
+      const textNode = document.createTextNode(text);
+      parent.replaceChild(textNode, ruby);
+    });
+  
+    // Optional: unwrap <span> or elements that contain only removed ruby
+    const cleanupSpans = document.querySelectorAll("span");
+    cleanupSpans.forEach(span => {
+      if (span.querySelectorAll("ruby").length === 0 && span.textContent.trim()) {
+        span.replaceWith(document.createTextNode(span.textContent));
+      }
+    });
+}  
 
-      function translateText(text) {
-        let result = '';
-        let i = 0;
-        while (i < text.length) {
-          let matched = false;
-          if (prefixSet.has(text[i])) {
-            for (const word of sortedKeys) {
-              if (text.startsWith(word, i)) {
-                result += translationMap[word];
-                i += word.length;
-                matched = true;
-                break;
+function runTranslation() {
+    fetch(chrome.runtime.getURL("data/translate.json"))
+      .then(response => response.json())
+      .then(translationMap => {
+        const sortedKeys = Object.keys(translationMap).sort((a, b) => b.length - a.length);
+        const prefixSet = new Set(sortedKeys.map(word => word[0]));
+  
+        function translateText(text) {
+          let result = '';
+          let i = 0;
+          while (i < text.length) {
+            let matched = false;
+            if (prefixSet.has(text[i])) {
+              for (const word of sortedKeys) {
+                if (text.startsWith(word, i)) {
+                  result += translationMap[word];
+                  i += word.length;
+                  matched = true;
+                  break;
+                }
               }
             }
+            if (!matched) {
+              result += text[i];
+              i += 1;
+            }
           }
-          if (!matched) {
-            result += text[i];
-            i += 1;
+          return result;
+        }
+  
+        function walkAndTranslate(node) {
+          const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, null, false);
+          let textNode;
+          while ((textNode = walker.nextNode())) {
+            const original = textNode.nodeValue;
+            const translated = translateText(original);
+            if (original !== translated) {
+              textNode.parentElement?.setAttribute("data-original", original);
+              textNode.nodeValue = translated;
+            }
           }
         }
-        return result;
-      }
-
-      function walkAndTranslate(node) {
-        const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, null, false);
-        let textNode;
-        while ((textNode = walker.nextNode())) {
-          const original = textNode.nodeValue;
-          const translated = translateText(original);
-          if (original !== translated) {
-            textNode.parentElement?.setAttribute("data-original", original);
-            textNode.nodeValue = translated;
+  
+        walkAndTranslate(document.body);
+  
+        // ✅ Respect the Wugniu toggle before applying annotations
+        chrome.storage.local.get("wugniuEnabled", (data) => {
+          if (data.wugniuEnabled !== false) {
+            processPage();
           }
-        }
-      }
-
-      walkAndTranslate(document.body);
-      processPage();
-    })
-}
+        });
+      });
+  }
+  
 
 function undoTranslation() {
     const elements = document.querySelectorAll("[data-original]");
