@@ -42,4 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  // To show a random example
+  const examples = document.querySelectorAll(".example-block .example");
+  if (examples.length > 0) {
+    const randomIndex = Math.floor(Math.random() * examples.length);
+    examples[randomIndex].style.display = "block";
+  }
 });
