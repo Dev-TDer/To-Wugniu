@@ -1,6 +1,6 @@
 {
     "extensionName": { "message": "To Wugniu 吴语通" },
-    "extensionDescription": { "message": "帮每只汉字标吴语（上海言话）拼音，外加有只翻译功能好拿网页从国语翻成上海言话。" },
+    "extensionDescription": { "message": "帮每个汉字标吴语（上海话）拼音，外加提供翻译开关，好拿网页从国语翻成上海言话。" },
     "contextMenuShanghainese": { "message": "To 上海言话" },
     "contextMenuSuzhounese": { "message": "To 苏州言话" },
     "contextMenuNingbonese": { "message": "To 宁波言话" }

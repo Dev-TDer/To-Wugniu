@@ -1,6 +1,6 @@
 {
     "extensionName": { "message": "To Wugniu 吳語通" },
-    "extensionDescription": { "message": "Add Wu (Shanghainese) pronunciation above Chinese characters and translate websites from Mandarin to Shanghainese." },
+    "extensionDescription": { "message": "Display Wu (Shanghainese) pronunciation above Chinese characters, with an option to toggle between written and spoken Shanghainese." },
     "contextMenuShanghainese": { "message": "To Shanghainese" },
     "contextMenuSuzhounese": { "message": "To Suzhounese" },
     "contextMenuNingbonese": { "message": "To Ningbonese" }
