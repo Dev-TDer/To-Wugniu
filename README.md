@@ -1,5 +1,5 @@
 # To Wugniu <ruby>吳<rt>wu</rt></ruby> <ruby>語<rt>gniu</rt></ruby> <ruby>通<rt>thon</rt></ruby>
-This Chrome extension displays Wu (Shanghainese) pronunciation above each Chinese character, with an option to toggle between written and spoken Shanghainese.
+This Chrome extension displays Wu (Shanghainese) pronunciation above Chinese characters, with an option to toggle between written and spoken Shanghainese.
 
 ## Download <ruby>下<rt>gho</rt></ruby> <ruby>載<rt>tse</rt></ruby>
 - [Chrome Web Store](https://chromewebstore.google.com/detail/gkfjbikjgdjfkpjnbjofdadakgpohkom?utm_source=item-share-cb)
